@@ -5,7 +5,8 @@ $(document).ready(function(){
     });
     $("#CaixaEstoque").keypress(SomenteNumeros);
 	$("#TabelaAdicionar").hide();
-	getJSON();	
+	$("#CaixaValor").maskMoney({showSymbol:true, symbol:"", decimal:".", thousands:","});
+	getJSON();
 });
 
 //variável que chamam os endereços.
@@ -23,8 +24,16 @@ var mensagens = {
 	}
 //função que aceita somente números.
 	function SomenteNumeros(e){
-    	if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-			return false;
+		var texto = $("#CaixaEstoque").val();
+		var indexvir = texto.indexOf(",");
+     	var indexpon = texto.indexOf(".");
+    	if ( e.which == 8 || e.which == 0 ) return true;
+    	if ( e.which != 44 && e.which != 46 && e.which < 48 || e.which > 57 ) return false;
+    	if (e.which == 44) { 
+    		if (indexvir !== -1 || indexpon !== -1) return false; 
+    	}
+    	if (e.which == 46) { 
+    		if (indexvir !== -1 || indexpon !== -1) return false; 
     	}
 	}
 //função que chama os itens da url.

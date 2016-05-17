@@ -10,6 +10,12 @@ $(document).ready(function(){
 
 //variável que chamam os endereços.
 var	url="http://localhost:3000/product/";
+var mensagens = {
+	invalidez:"OPS! Esta opção é inválida! Escolha outra, por favor!",
+	deleteSucesso: "A opção foi apagada com sucesso!",
+	adionarSucesso: "A opção foi adicionada com sucesso!",
+	optionNull: "Selecione uma alternativa..."
+}
 
 //função que aceita números,vírgulas e pontos.
 	function NumerosVirgulasPontos( texto, emBranco, campo ){
@@ -24,7 +30,7 @@ var	url="http://localhost:3000/product/";
 //função que chama os itens da url.
 	function getJSON(){
 		$.getJSON([url], function(database){
-			var alternativas='<option value="#">Selecione uma alternativa...</option>';
+			var alternativas='<option value="#">'+mensagens.optionNull+'</option>';
 			for (var g=0; g<database.length; g++){
 				alternativas+='<option value='+database[g].id + '>' + database[g].nome + '</option>';
 			}
@@ -58,7 +64,7 @@ var	url="http://localhost:3000/product/";
 			})
 		}
 		else{
-			alert("OPS! Esta opção é inválida! Escolha outra, por favor!")
+			alert(mensagens.invalidez);
 		}
 	}
 //função que faz aparecer o ítem solicitado.
@@ -82,7 +88,7 @@ var	url="http://localhost:3000/product/";
 			success: function(){
 				$("#TabelaAdicionar").hide();
 				getJSON();
-				alert("A opção foi apagada com sucesso!");
+				alert(mensagens.deleteSucesso);
 			}
 		})
 	}
@@ -100,7 +106,7 @@ var	url="http://localhost:3000/product/";
 				success: function(){
 					$("#TabelaAdicionar").hide();
 					getJSON();
-					alert("A opção foi adicionada com sucesso!");
+					alert(mensagens.adionarSucesso);
 				}
 			})
 		})

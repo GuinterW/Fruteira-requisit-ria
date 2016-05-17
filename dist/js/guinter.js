@@ -99,6 +99,7 @@ var mensagens = {
 				$("#TabelaAdicionar").hide();
 				getJSON();
 				alert(mensagens.deleteSucesso);
+				$('#Tudo').html('').hide();
 			}
 		})
 	}

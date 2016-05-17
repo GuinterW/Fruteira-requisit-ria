@@ -8,9 +8,8 @@ $(document).ready(function(){
 	getJSON();	
 });
 
-//variáveis que chamam os endereços.
-var todososprodutos="http://localhost:3000/product";
-var	produtosespecificos="http://localhost:3000/product/";
+//variável que chamam os endereços.
+var	url="http://localhost:3000/product/";
 
 //função que aceita números,vírgulas e pontos.
 	function NumerosVirgulasPontos( texto, emBranco, campo ){
@@ -24,7 +23,7 @@ var	produtosespecificos="http://localhost:3000/product/";
 	}
 //função que chama os itens da url.
 	function getJSON(){
-		$.getJSON([todososprodutos], function(database){
+		$.getJSON([url], function(database){
 			var alternativas='<option value="#">Selecione uma alternativa...</option>';
 			for (var g=0; g<database.length; g++){
 				alternativas+='<option value='+database[g].id + '>' + database[g].nome + '</option>';
@@ -45,12 +44,16 @@ var	produtosespecificos="http://localhost:3000/product/";
 			$("#TabelaAdicionar").show();
 			BotaoAdicionar(database);
 		});
+		$("#BotaoEditar").click(function(){
+			$("#TabelaAdicionar").show();
+
+		});
 	}
 //função que testa a variável 'z' para que a primeira opção não seja escolhida.
 	function TesteVar(z){
 		var z = $('#Select').val();
 		if (z>0){
-			$.getJSON([produtosespecificos] + z, function(database){
+			$.getJSON([url] + z, function(database){
 				Escritas(database);
 			})
 		}
@@ -74,7 +77,7 @@ var	produtosespecificos="http://localhost:3000/product/";
 		var z = $('#Select').val();
 		TesteVar();
 		$.ajax({
-			url: [produtosespecificos] + z,
+			url: [url] + z,
 			type: "DELETE",
 			success: function(){
 				$("#TabelaAdicionar").hide();
@@ -91,7 +94,7 @@ var	produtosespecificos="http://localhost:3000/product/";
 			var Status = $('#CaixaStatus').val();
 			var Estoque = $('#CaixaEstoque').val();
 			$.ajax({
-				url: [todososprodutos],
+				url: [url],
 				type: "POST",
 				data: {nome: Produto,valor: Valor,status: Status,estoque: Estoque,}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ,
 				success: function(){

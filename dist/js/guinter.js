@@ -17,7 +17,8 @@ var mensagens = {
 	deleteSucesso: "A opção foi apagada com sucesso!",
 	adionarSucesso: "A opção foi adicionada com sucesso!",
 	optionNull: "Selecione uma alternativa...",
-	campoNull: "Preencha corretamente os campos!"
+	campoNull: "Preencha corretamente os campos!",
+	confirma: 'Você está certo disto?'
 }
 
 //função que aceita números,vírgulas e pontos.
@@ -55,7 +56,6 @@ function getJSON(){
 //função dos botões.
 function Cliques(database){
 	$("#BotaoExibir").click(function(){
-		mostra(['#BotaoEditar', '#BotaoDeletar', '#BotaoAdicionar']);
 		TesteVar();
 	});
 	$("#BotaoDeletar").click(function(){
@@ -98,6 +98,7 @@ function TesteVar(z){
 	var z = $('#Select').val();
 	if (z>0){
 		$.getJSON([url] + z, function(database){
+			mostra(['#BotaoEditar', '#BotaoDeletar', '#BotaoAdicionar']);
 			Escritas(database);
 		})
 	}
@@ -121,8 +122,7 @@ function Escritas(database){
 //função que apaga a opção quando o botão 'Deletar' for pressionado.
 function BotaoDeletar(){
 	var z = $('#Select').val();
-	TesteVar();
-	ajax(url + z, 'DELETE', mensagens.deleteSucesso, '');
+	if(confirm(mensagens.confirma)) ajax(url + z, 'DELETE', mensagens.deleteSucesso, '');
 }
 
 function ajax(url, type, mensagem, data){
@@ -139,7 +139,6 @@ function ajax(url, type, mensagem, data){
 	})
 }
 
-
 //função que adiciona uma opção quando o botão 'Adicionar' for pressionado.
 function BotaoAdicionar(){
 	$("#Adicionar").click(function(){
@@ -149,9 +148,11 @@ function BotaoAdicionar(){
 		var Estoque = $('#CaixaEstoque').val();
 		var data = {nome: Produto,valor: Valor,status: Status,estoque: Estoque};
 		if($("#CaixaProduto").val()!=='' && $("#CaixaValor").val()!=='' && $("#CaixaEstoque").val()!==''){
-			$('#Adicionar').hide();
-			$('#BotaoAdicionar').show();
-			ajax(url, 'POST', mensagens.adionarSucesso, data);
+			if(confirm(mensagens.confirma)){
+				$('#Adicionar').hide();
+				$('#BotaoAdicionar').show();
+				ajax(url, 'POST', mensagens.adionarSucesso, data);
+			}
 		}
 		else alert(mensagens.campoNull);
 	})
@@ -166,9 +167,11 @@ function BotaoEditar(){
 		var Estoque = $('#CaixaEstoque').val();
 		var data = {nome: Produto,valor: Valor,status: Status,estoque: Estoque};
 		if($("#CaixaProduto").val()!=='' && $("#CaixaValor").val()!=='' && $("#CaixaEstoque").val()!==''){
-			$('#Enviar').hide();
-			$('#BotaoAdicionar').show();
-			ajax(url + z, 'PUT', mensagens.adionarSucesso, data);
+			if(confirm(mensagens.confirma)){	
+				$('#Enviar').hide();
+				$('#BotaoAdicionar').show();
+				ajax(url + z, 'PUT', mensagens.adionarSucesso, data);
+			}
 		}
 		else alert(mensagens.campoNull);
 	})

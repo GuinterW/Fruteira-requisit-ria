@@ -3,7 +3,7 @@ body{background-color: #00264d; text-align: center;}
 select{width: 50%;}
 #BotaoExibir{font-weight: bold; width: 20%;}
 #BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar{font-weight: bold; width: 20%;}
-#BotaoBuscar, #BotaoDeletar,#BotaoEditar{margin-bottom: 15px; font-weight: bold; width: 20%; display: none;}
+#BotaoBuscar, #BotaoDeletar,#BotaoEditar{margin-bottom: 15px; font-weight: bold; width: 20%;}
 #Botoes{padding-bottom: 20px;}
 #TabelaAdicionar{width:80%; margin: 0 auto; margin-bottom: 15px; padding: 5px; text-align: center; display: none; font-size: 100%; background-color: #00264d; color:#80bfff; border: 5px solid white; font-family: verdana; border-radius: 10px;}
 #TabelaAdicionar #CaixaStatus, #TabelaAdicionar input {width: 250px;}

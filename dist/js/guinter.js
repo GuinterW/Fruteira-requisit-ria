@@ -120,17 +120,23 @@ function Escritas(database){
 function BotaoDeletar(){
 	var z = $('#Select').val();
 	TesteVar();
+	ajax(url + z, 'DELETE', mensagens.deleteSucesso, '');
+}
+
+function ajax(url, type, mensagem, data){
 	$.ajax({
-		url: [url] + z,
-		type: "DELETE",
+		url: url,
+		type: type,
+		data: data,
 		success: function(){
 			$("#TabelaAdicionar").hide();
-			getJSON();
 			$('#Tudo').html('').hide();
-			alert(mensagens.deleteSucesso);
+			getJSON();
+			alert(mensagem);
 		}
 	})
 }
+
 
 //função que adiciona uma opção quando o botão 'Adicionar' for pressionado.
 function BotaoAdicionar(database){
@@ -139,17 +145,9 @@ function BotaoAdicionar(database){
 		var Valor = $('#CaixaValor').val();
 		var Status = $('#CaixaStatus').val();
 		var Estoque = $('#CaixaEstoque').val();
+		var data = {nome: Produto,valor: Valor,status: Status,estoque: Estoque};
 		if($("#CaixaProduto").val()!=='' && $("#CaixaValor").val()!=='' && $("#CaixaEstoque").val()!==''){
-			$.ajax({
-				url: [url],
-				type: "POST",
-				data: {nome: Produto,valor: Valor,status: Status,estoque: Estoque,}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ,
-				success: function(){
-					$("#TabelaAdicionar").hide();
-					getJSON();
-					alert(mensagens.adionarSucesso);
-				}
-			})
+			ajax(url, 'POST', mensagens.adionarSucesso, data);
 		}
 		else alert(mensagens.campoNull);
 		$('#Adicionar').hide();

@@ -149,11 +149,11 @@ function BotaoAdicionar(){
 		var Estoque = $('#CaixaEstoque').val();
 		var data = {nome: Produto,valor: Valor,status: Status,estoque: Estoque};
 		if($("#CaixaProduto").val()!=='' && $("#CaixaValor").val()!=='' && $("#CaixaEstoque").val()!==''){
+			$('#Adicionar').hide();
+			$('#BotaoAdicionar').show();
 			ajax(url, 'POST', mensagens.adionarSucesso, data);
 		}
 		else alert(mensagens.campoNull);
-		$('#Adicionar').hide();
-		$('#BotaoAdicionar').show();
 	})
 }
 
@@ -166,10 +166,10 @@ function BotaoEditar(){
 		var Estoque = $('#CaixaEstoque').val();
 		var data = {nome: Produto,valor: Valor,status: Status,estoque: Estoque};
 		if($("#CaixaProduto").val()!=='' && $("#CaixaValor").val()!=='' && $("#CaixaEstoque").val()!==''){
+			$('#Enviar').hide();
+			$('#BotaoAdicionar').show();
 			ajax(url + z, 'PUT', mensagens.adionarSucesso, data);
 		}
 		else alert(mensagens.campoNull);
-		$('#Enviar').hide();
-		$('#BotaoEditar').show();
 	})
 }

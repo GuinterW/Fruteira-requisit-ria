@@ -1,4 +1,5 @@
-﻿<html lang="pt-br">
+﻿<!DOCTYPE html>
+<html lang="pt-br">
 	<head>
 		<meta charset='utf-8'>
 		<link rel="stylesheet" href="../css/guinter-styles.css">
@@ -16,14 +17,15 @@
 				<button id="BotaoSelecionar">Selecionar</button>
 				<button id="BotaoPesquisar">Pesquisar</button>
 			</div>
+			<input id="CampoPesquisa" type="text" placeholder="Digite o código do produto"></input>
+			<button id="BotaoBuscar">Buscar </button><br>
 			<div id="CampoSelecionar">
 				<select id="Select"></select>
 				<button id="BotaoExibir">Exibir </button><br>
 				<button id="BotaoEditar">Editar</button>
 				<button id="BotaoDeletar">Deletar</button>
 			</div>
-			<input id="CampoPesquisa" type="text" placeholder="Digite o código do produto"></input>
-			<button id="BotaoEditar">Editar</button>
+			<div id="Tudo"> </div>
 			<div id="TabelaAdicionar">
 				<p><span class="FraseTabela">Por favor, preencha os campos abaixo!</span><br><br>
 				Produto <br> <input type="text" id="CaixaProduto"/><br>
@@ -36,7 +38,6 @@
 				<button id="Adicionar">Adicionar</button>
 				<button id="Enviar">Enviar</button>
 			</div>
-			<div id="Tudo"> </div>
 		</div>
 	</body>
 </html>

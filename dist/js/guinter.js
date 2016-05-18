@@ -18,7 +18,7 @@ var mensagens = {
 }
 
 function inicio (){
-	esconde(['#CampoPesquisa','#CampoSelecionar','#TabelaAdicionar',]);
+	esconde(['#CampoPesquisa','#CampoSelecionar','#TabelaAdicionar']);
 	mostra(['#BotaoAdicionar','#BotaoPesquisar','#BotaoSelecionar']);
 }
 
@@ -46,7 +46,7 @@ function SomenteNumeros (e){
 
 //função que chama os itens da url.
 function getJSON(){
-	$.getJSON([url], function(database){
+	$.getJSON(url, function(database){
 		var alternativas='<option value="#">'+mensagens.optionNull+'</option>';
 		for (var g=0; g<database.length; g++){
 			alternativas+='<option value='+database[g].id + '>' + database[g].nome + '</option>';
@@ -69,7 +69,7 @@ function Cliques(database){
 	$("#BotaoAdicionar").click(function(){
 		$('#Tudo').html('');
 		mostra(['#TabelaAdicionar','#Adicionar']);
-		esconde(['#CampoSelecionar','#CampoPesquisa','#Tudo']);
+		esconde(['#CampoSelecionar','#CampoPesquisa','#Tudo','#Enviar','#BotaoBuscar']);
 		BotaoAdicionar();
 	});
 	$("#BotaoEditar").click(function(){
@@ -80,11 +80,15 @@ function Cliques(database){
 	});
 	$("#BotaoPesquisar").click(function(){
 		esconde(['#TabelaAdicionar','#CampoSelecionar','#Tudo'])
-		mostra(['#CampoPesquisa','#BotaoExibir']);
+		mostra(['#CampoPesquisa','#BotaoBuscar']);
 		//$("#CampoPesquisa").show();
 	});
+	$("#BotaoBuscar").click(function(){
+		var codigo = $('#CampoPesquisa').val();
+		buscar(codigo);
+	});
 	$("#BotaoSelecionar").click(function(){
-		esconde(['#TabelaAdicionar','#CampoPesquisa'])
+		esconde(['#TabelaAdicionar','#CampoPesquisa','#BotaoBuscar','#Tudo'])
 		$("#CampoSelecionar").show();
 	});
 }
@@ -105,14 +109,18 @@ function mostra(itens){
 function TesteVar(z){
 	var z = $('#Select').val();
 	if (z>0){
-		$.getJSON([url] + z, function(database){
-			mostra(['#BotaoEditar', '#BotaoDeletar']);
-			Escritas(database);
-		})
+		requesicaoEscritas(url + z);
 	}
 	else{
 		alert(mensagens.invalidez);
 	}
+}
+
+function requesicaoEscritas(endereco){
+	$.getJSON(endereco, function(database){
+		mostra(['#BotaoEditar', '#BotaoDeletar']);
+		Escritas(database);
+	})
 }
 
 //função que faz aparecer o ítem solicitado.
@@ -125,6 +133,8 @@ function Escritas(database){
 	respostas+= '<b>Status: </b>' + database.status + '<br>';
 	respostas+= '<b>Estoque: </b>' + database.estoque;
 	$('#Tudo').html(respostas);
+	mostra(['#CampoSelecionar']);
+	esconde(['#Select','#BotaoExibir']);
 }
 
 //função que apaga a opção quando o botão 'Deletar' for pressionado.
@@ -141,7 +151,6 @@ function ajax(url, type, data){
 		success: function(){
 			$("#TabelaAdicionar").hide();
 			$('#Tudo').html('').hide();
-			getJSON();
 		}
 	});
 	esconde(['#TabelaAdicionar','#CampoPesquisa','#CampoSelecionar'])
@@ -183,4 +192,14 @@ function BotaoEditar(){
 		}
 		else alert(mensagens.campoNull);
 	})
+}
+
+function buscar(codigo){
+	if(codigo>0){
+        requesicaoEscritas(url+codigo);
+    }
+    else{
+        alert(mensagens.invalidez);
+    }
+    $('#CampoPesquisa').val('');
 }

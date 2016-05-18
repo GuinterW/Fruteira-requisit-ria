@@ -1,13 +1,12 @@
 body{background-color: #00264d; text-align: center;}
 #EscolhaFruta{background-color: #80bfff;font-weight: bold; width:70%; margin:0 auto; font-family: verdana; border:5px solid white; border-radius: 10px; padding: 10px;}
-select{width: 30%;}
+select{width: 50%;}
 #BotaoExibir{font-weight: bold; width: 20%;}
 #BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar{font-weight: bold; width: 20%;}
-#BotaoEditar{margin-bottom: 15px; font-weight: bold; width: 20%; display: none;}
-#BotaoDeletar{font-weight: bold; width: 20%; display: none;}
+#BotaoBuscar, #BotaoDeletar,#BotaoEditar{margin-bottom: 15px; font-weight: bold; width: 20%; display: none;}
 #Botoes{padding-bottom: 20px;}
-#TabelaAdicionar{width:80%; margin: 0 auto; margin-bottom: 15px; text-align: center; display: none; padding: 5px; font-size: 100%; background-color: #00264d; color:#80bfff; border: 5px solid white; font-family: verdana; border-radius: 10px;}
+#TabelaAdicionar{width:80%; margin: 0 auto; margin-bottom: 15px; padding: 5px; text-align: center; display: none; font-size: 100%; background-color: #00264d; color:#80bfff; border: 5px solid white; font-family: verdana; border-radius: 10px;}
 #TabelaAdicionar #CaixaStatus, #TabelaAdicionar input {width: 250px;}
-#Tudo{display: none; padding: 15px; background-color: #00264d; color: #80bfff; border: 5px solid white; margin: 20px 20px 20px 20px; border-radius: 100px;}
+#Tudo{display: none; padding: 10px; background-color: #00264d; color: #80bfff; border: 2px solid white; margin: 20px 20px 20px 20px; border-radius: 10px;}
 span.frasecentralizada{font-weight:bold; font-size: 150%; color:#00264d;}
-span.FraseTabela{font-weight: bold; color:#80bfff; font-size: 110%;}
+span.FraseTabela{font-weight: bold; color:#80bfff; font-size: 110%; margin: 0 auto;}

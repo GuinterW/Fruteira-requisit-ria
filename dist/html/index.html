@@ -1,36 +1,42 @@
 ﻿<html lang="pt-br">
-<head>
-	<meta charset='utf-8'>
-	<link rel="stylesheet" href="../css/guinter-styles.css">
-	<link href="../img/salada_de_frutas.jpg" rel="icon" type="image/jpg">
-	<script src="../js/jquery-1.12.3.js"></script>
-	<script src="../js/jquery.maskMoney.js" ></script>
-	<script src="../js/guinter.js"></script>
-	<title>Frutas</title>
-</head>
-<body>
-	<div id="EscolhaFruta">
-		<p><span class="FraseCentralizada">Bem vindo a fruteira DigitalDesk!</span></p><br>
-		<div id="Botoes">
-			<select id="Select"></select>
-			<button id="BotaoExibir">Exibir </button><br><br>
-			<button id="BotaoAdicionar">Adicionar</button>
+	<head>
+		<meta charset='utf-8'>
+		<link rel="stylesheet" href="../css/guinter-styles.css">
+		<link href="../img/salada_de_frutas.jpg" rel="icon" type="image/jpg">
+		<script src="../js/jquery-1.12.3.js"></script>
+		<script src="../js/jquery.maskMoney.js" ></script>
+		<script src="../js/guinter.js"></script>
+		<title>Frutas</title>
+	</head>
+	<body>
+		<div id="EscolhaFruta">
+			<p><span class="FraseCentralizada">Bem vindo a fruteira DigitalDesk!</span></p><br>
+			<div id="Botoes">
+				<button id="BotaoAdicionar">Adicionar</button>
+				<button id="BotaoSelecionar">Selecionar</button>
+				<button id="BotaoPesquisar">Pesquisar</button>
+			</div>
+			<div id="CampoSelecionar">
+				<select id="Select"></select>
+				<button id="BotaoExibir">Exibir </button><br>
+				<button id="BotaoEditar">Editar</button>
+				<button id="BotaoDeletar">Deletar</button>
+			</div>
+			<input id="CampoPesquisa" type="text" placeholder="Digite o código do produto"></input>
 			<button id="BotaoEditar">Editar</button>
-			<button id="BotaoDeletar">Deletar</button>
+			<div id="TabelaAdicionar">
+				<p><span class="FraseTabela">Por favor, preencha os campos abaixo!</span><br><br>
+				Produto <br> <input type="text" id="CaixaProduto"/><br>
+				Valor R$ <br> <input type="text" id="CaixaValor"/><br>
+				Status <br> <select id="CaixaStatus">
+					<option value="A">Ativo</option>
+					<option value="I">Inativo</option>
+				</select><br>
+				Estoque <br> <input type="text" id="CaixaEstoque"/></p>
+				<button id="Adicionar">Adicionar</button>
+				<button id="Enviar">Enviar</button>
+			</div>
+			<div id="Tudo"> </div>
 		</div>
-		<div id="TabelaAdicionar">
-			<p><span class="FraseTabela">Por favor, preencha os campos abaixo!</span><br><br>
-			Produto <br> <input type="text" id="CaixaProduto"/><br>
-			Valor R$ <br> <input type="text" id="CaixaValor"/><br>
-			Status <br> <select id="CaixaStatus">
-				<option value="A">Ativo</option>
-				<option value="I">Inativo</option>
-			</select><br>
-			Estoque <br> <input type="text" id="CaixaEstoque"/></p>
-			<button id="Adicionar">Adicionar</button>
-			<button id="Enviar">Enviar</button>
-		</div>
-		<div id="Tudo"> </div>
-	</div>
-</body>
+	</body>
 </html>

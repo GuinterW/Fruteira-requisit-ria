@@ -68,14 +68,16 @@ function Cliques(database){
 		$('#Tudo').html('').hide();
 		$(this).hide();
 		$('#Enviar').hide();
-		esconde(['#BotaoEditar', '#BotaoDeletar', '#BotaoAdicionar']);
+		esconde(['#BotaoEditar', '#BotaoDeletar', '#BotaoAdicionar', '#Enviar']);
 		$('#Adicionar').show();
-		BotaoAdicionar(database);
+		BotaoAdicionar();
 	});
 	$("#BotaoEditar").click(function(){
 		$("#TabelaAdicionar").show();
-		esconde(['#BotaoEditar', '#BotaoDeletar', '#BotaoAdicionar']);
+		$('#Tudo').html('').hide();
+		esconde(['#BotaoEditar', '#BotaoDeletar', '#BotaoAdicionar', '#Adicionar']);
 		$('#Enviar').show();
+		BotaoEditar();
 	});
 }
 
@@ -139,8 +141,8 @@ function ajax(url, type, mensagem, data){
 
 
 //função que adiciona uma opção quando o botão 'Adicionar' for pressionado.
-function BotaoAdicionar(database){
-	$("#Adicionar").click(function(database){
+function BotaoAdicionar(){
+	$("#Adicionar").click(function(){
 		var Produto = $('#CaixaProduto').val();
 		var Valor = $('#CaixaValor').val();
 		var Status = $('#CaixaStatus').val();
@@ -152,5 +154,22 @@ function BotaoAdicionar(database){
 		else alert(mensagens.campoNull);
 		$('#Adicionar').hide();
 		$('#BotaoAdicionar').show();
+	})
+}
+
+function BotaoEditar(){
+	$("#Enviar").click(function(){
+		var z = $('#Select').val();
+		var Produto = $('#CaixaProduto').val();
+		var Valor = $('#CaixaValor').val();
+		var Status = $('#CaixaStatus').val();
+		var Estoque = $('#CaixaEstoque').val();
+		var data = {nome: Produto,valor: Valor,status: Status,estoque: Estoque};
+		if($("#CaixaProduto").val()!=='' && $("#CaixaValor").val()!=='' && $("#CaixaEstoque").val()!==''){
+			ajax(url + z, 'PUT', mensagens.adionarSucesso, data);
+		}
+		else alert(mensagens.campoNull);
+		$('#Enviar').hide();
+		$('#BotaoEditar').show();
 	})
 }

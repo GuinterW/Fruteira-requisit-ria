@@ -126,13 +126,13 @@ function Cliques(){
 	$("#BotaoAdicionar").click(function(){
 		$('#Tudo').html('');
 		atualizarFormulario (true, '');
-		mostra(['#TabelaAdicionar','#Adicionar']);
-		esconde(['#CampoSelecionar', '#itensBusca' ,'#Tudo','#Enviar','#editaEdeleta']);
+		mostra(['#TabelaAdicionar','#Adicionar','#TituloAdicionar']);
+		esconde(['#CampoSelecionar', '#itensBusca' ,'#Tudo','#Enviar','#editaEdeleta','#TituloEditar']);
 	});
 
 	$("#BotaoEditar").click(function(){
-		mostra(['#TabelaAdicionar','#Enviar']);
-		esconde(['#CampoSelecionar', '#itensBusca', '#Tudo','#Adicionar']);
+		mostra(['#TabelaAdicionar','#Enviar','#TituloEditar']);
+		esconde(['#CampoSelecionar', '#itensBusca', '#Tudo','#Adicionar','#TituloAdicionar']);
 	});
 
 	$("#BotaoPesquisar").click(function(){

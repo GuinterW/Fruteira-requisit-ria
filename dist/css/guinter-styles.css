@@ -1,9 +1,9 @@
 body{background-color: #80bfff; text-align: center;}
 #EscolhaFruta{background-color:#00264d;font-weight: bold; width:70%; margin:0 auto; font-family: verdana; border:5px solid white; border-radius: 10px; padding: 10px;}
 select{width: 50%;}
-#BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar, #BotaoBuscar, #BotaoDeletar,#BotaoEditar, #BotaoExibir, #Adicionar {margin: 5px auto; font-weight: bold; width: 20%; font-size: 100%; border: none; border-radius: 5px; background-color: white; color: #00264d;}
+#BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar, #BotaoBuscar, #BotaoDeletar,#BotaoEditar, #BotaoExibir, #Adicionar {cursor: pointer; margin: 5px auto; font-weight: bold; width: 20%; font-size: 100%; border: none; border-radius: 5px; background-color: white; color: #00264d;}
 #BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar {padding: 1%;}
-#BotaoHome {background-image: url(../img/home.png); width: 40px; height: 40px;  padding: 15px; background-color: transparent; border: none; margin-right: 10px;}
+#BotaoHome {cursor: pointer; background-image: url(../img/home.png); width: 40px; height: 40px;  padding: 15px; background-color: transparent; border: none; margin-right: 10px;}
 #Botoes{padding-bottom: 20px;}
 #CampoSelecionar #Select {width: 40%; border-radius: 5px; font-size: 100%;}
 #TabelaAdicionar{width:80%; margin: 0 auto; margin: 5px auto; text-align: center; display: none; font-size: 100%; background-color: #80bfff; color:#00264d; border: 5px solid white; font-family: verdana; border-radius: 10px;}

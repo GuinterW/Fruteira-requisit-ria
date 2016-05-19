@@ -1,11 +1,14 @@
-body{background-color: #00264d; text-align: center;}
-	#EscolhaFruta{background-color: #80bfff;font-weight: bold; width:70%; margin:0 auto; font-family: verdana; border:5px solid white; border-radius: 10px;}
-			select{width: 30%;}
-			#BotaoExibir{font-weight: bold; width: 20%;}
-			#BotaoAdicionar{font-weight: bold; width: 20%;}
-			#BotaoEditar{margin-bottom: 15px; font-weight: bold; width: 20%;}
-			#BotaoDeletar{font-weight: bold; width: 20%;}
-		#TabelaAdicionar{display: none; padding: 15px; font-size: 150%; background-color: #00264d; color:#80bfff; border: 5px solid white; font-family: verdana; border-radius: 10px;}
-		#Tudo{display: none; padding: 15px; background-color: #00264d; color: #80bfff; border: 5px solid white; margin: 20px 20px 20px 20px; border-radius: 100px;}
-		span.frasecentralizada{font-weight:bold; font-size: 150%; color:#00264d;}
-		span.FraseTabela{font-weight: bold; color:#80bfff;}
+body{background-color: #80bfff; text-align: center;}
+#EscolhaFruta{background-color:#00264d;font-weight: bold; width:70%; margin:0 auto; font-family: verdana; border:5px solid white; border-radius: 10px; padding: 10px;}
+select{width: 50%;}
+#BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar, #BotaoBuscar, #BotaoDeletar,#BotaoEditar, #BotaoExibir, #Adicionar, #Enviar {cursor: pointer; margin: 5px auto; font-weight: bold; width: 20%; font-size: 100%; border: none; border-radius: 5px; background-color: white; color: #00264d;}
+#BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar {padding: 1%;}
+#BotaoHome {cursor: pointer; background-image: url(../img/home.png); width: 40px; height: 40px;  padding: 15px; background-color: transparent; border: none; margin-right: 10px;}
+#Botoes{padding-bottom: 20px;}
+#CampoSelecionar #Select {width: 40%; border-radius: 5px; font-size: 100%;}
+#TabelaAdicionar{width:80%; margin: 0 auto; margin: 5px auto; text-align: center; display: none; font-size: 100%; background-color: #80bfff; color:#00264d; border: 5px solid white; font-family: verdana; border-radius: 10px;}
+#TabelaAdicionar #CaixaStatus, #TabelaAdicionar input {width: 250px;}
+#Tudo{display: none; padding: 10px; background-color: #80bfff; color: #00264d; border: 2px solid white; margin: 20px 20px 20px 20px; border-radius: 10px;}
+span.FraseCentralizada{font-weight:bold; font-size: 150%; color:#80bfff; text-shadow: 0 0 20px #0080ff}
+span.FraseTabela{font-weight: bold; color:#00264d; font-size: 110%; margin: 0 auto;}
+span.FraseTabela2{font-weight: bold; color:#00264d; font-size: 110%; margin: 0 auto;}

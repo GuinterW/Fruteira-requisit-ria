@@ -2,8 +2,9 @@ body{background-color: #00264d; text-align: center;}
 #EscolhaFruta{background-color: #80bfff;font-weight: bold; width:70%; margin:0 auto; font-family: verdana; border:5px solid white; border-radius: 10px; padding: 10px;}
 select{width: 50%;}
 #BotaoExibir{font-weight: bold; width: 20%;}
-#BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar{font-weight: bold; width: 20%;}
+#BotaoAdicionar, #BotaoPesquisar, #BotaoSelecionar{font-weight: bold; width: 20%; font-size: 100%;}
 #BotaoBuscar, #BotaoDeletar,#BotaoEditar{margin-bottom: 15px; font-weight: bold; width: 20%;}
+#BotaoHome {background-image: url(../img/home.png); width: 30px; height: 30px;  padding: 8px;}
 #Botoes{padding-bottom: 20px;}
 #TabelaAdicionar{width:80%; margin: 0 auto; margin-bottom: 15px; padding: 5px; text-align: center; display: none; font-size: 100%; background-color: #00264d; color:#80bfff; border: 5px solid white; font-family: verdana; border-radius: 10px;}
 #TabelaAdicionar #CaixaStatus, #TabelaAdicionar input {width: 250px;}

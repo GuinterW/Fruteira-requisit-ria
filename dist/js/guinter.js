@@ -14,12 +14,13 @@ $(document).ready(function(){
 	$('#Adicionar').show();
 	$("#CaixaValor").maskMoney({showSymbol:true, symbol:"", decimal:".", thousands:","});
 	inicio();
-	getJSON();
+	requisicaoSelect();
+	Cliques();
 });
 
 function inicio (){
 	mostra(['#BotaoAdicionar','#BotaoPesquisar','#BotaoSelecionar']);
-	esconde(['#itensBusca','#CampoSelecionar','#TabelaAdicionar','#BotaoDeletar','#BotaoEditar']);
+	esconde(['#itensBusca','#CampoSelecionar','#TabelaAdicionar','#editaEdeleta']);
 }
 
 function esconde(itens){
@@ -60,7 +61,7 @@ function atualizarFormulario (limpar, database){
 	if(limpar){
 		var Produto = $('#CaixaProduto').val('');
 		var Valor = $('#CaixaValor').val('');
-		var Status = $('#CaixaStatus').val('');
+		var Status = $('#CaixaStatus').val('A');
 		var Estoque = $('#CaixaEstoque').val('');
 	}
 	else{
@@ -80,6 +81,20 @@ function formulario(){
 	return data;
 }
 
+function atualizarSelect(database){
+	var alternativas='<option value="#">'+mensagens.optionNull+'</option>';
+	for (var g=0; g<database.length; g++){
+		alternativas+='<option value='+database[g].id + '>' + database[g].nome + '</option>';
+	}
+	$("#Select").html(alternativas);
+}
+
+function requisicaoSelect(){
+	$.getJSON(url, function(database){
+		atualizarSelect(database);
+	});
+}
+
 function ajax(url, type, data){
 	$.ajax({
 		url: url,
@@ -88,55 +103,53 @@ function ajax(url, type, data){
 		success: function(){
 			$("#TabelaAdicionar").hide();
 			$('#Tudo').html('').hide();
+			requisicaoSelect();
 		}
 	});
-	esconde(['#TabelaAdicionar','#itensBusca','#CampoSelecionar','BotaoDeletar','#BotaoEditar'])
-}
-
-//função que chama os itens da url.
-function getJSON(){
-	$.getJSON(url, function(database){
-		var alternativas='<option value="#">'+mensagens.optionNull+'</option>';
-		for (var g=0; g<database.length; g++){
-			alternativas+='<option value='+database[g].id + '>' + database[g].nome + '</option>';
-		}
-		$("#Select").html(alternativas);
-		Cliques(database);	
-	});
+	esconde(['#TabelaAdicionar','#itensBusca','#CampoSelecionar','#editaEdeleta'])
 }
 
 //função dos botões.
-function Cliques(database){
+function Cliques(){
+	$("#BotaoHome").click(function(){
+		inicio();
+	});
+	
 	$("#BotaoExibir").click(function(){
 		TesteVar();
 	});
+
 	$("#BotaoDeletar").click(function(){
 		BotaoDeletar();
 	});
+
 	$("#BotaoAdicionar").click(function(){
 		$('#Tudo').html('');
 		atualizarFormulario (true, '');
 		mostra(['#TabelaAdicionar','#Adicionar']);
-		esconde(['#CampoSelecionar', '#itensBusca' ,'#Tudo','#Enviar','#BotaoDeletar','#BotaoEditar']);
+		esconde(['#CampoSelecionar', '#itensBusca' ,'#Tudo','#Enviar','#editaEdeleta']);
 	});
+
 	$("#BotaoEditar").click(function(){
 		mostra(['#TabelaAdicionar','#Enviar']);
 		esconde(['#CampoSelecionar', '#itensBusca', '#Tudo','#Adicionar']);
 	});
+
 	$("#BotaoPesquisar").click(function(){
 		mostra(['#itensBusca']);
-		esconde(['#TabelaAdicionar','#CampoSelecionar','#Tudo', '#BotaoDeletar','#BotaoEditar'])
+		esconde(['#TabelaAdicionar','#CampoSelecionar','#Tudo', '#editaEdeleta'])
 	});
+
 	$("#BotaoBuscar").click(function(){
 		var codigo = $('#CampoPesquisa').val();
 		$('#Select').val(codigo);
 		buscar(codigo);
 	});
+
 	$("#BotaoSelecionar").click(function(){
 		mostra(['#CampoSelecionar'])
-		esconde(['#TabelaAdicionar','#itensBusca','#Tudo', '#BotaoEditar', '#BotaoDeletar'])
+		esconde(['#TabelaAdicionar','#itensBusca','#Tudo', '#editaEdeleta'])
 	});
-
 
 	$("#Adicionar").click(function(){
 		var data = formulario();
@@ -154,6 +167,7 @@ function Cliques(database){
 		if($("#CaixaProduto").val()!=='' && $("#CaixaValor").val()!=='' && $("#CaixaEstoque").val()!==''){
 			if(confirm(mensagens.confirma)){	
 				$('#BotaoAdicionar').show();
+				$('#editaEdeleta').hide();
 				ajax(url + z, 'PUT', data);
 			}
 		}
@@ -191,7 +205,7 @@ function buscar(codigo){
 
 function requesicaoEscritas(endereco){
 	$.getJSON(endereco, function(database){
-		mostra(['#BotaoEditar', '#BotaoDeletar']);
+		mostra(['#editaEdeleta']);
 		Escritas(database);
 	})
 	.fail(function() {
@@ -212,5 +226,5 @@ function Escritas(database){
 	respostas+= '<b>Estoque: </b>' + database.estoque;
 	atualizarFormulario(false, database);
 	$('#Tudo').html(respostas);
-	mostra(['#BotaoEditar','#BotaoDeletar']);
+	mostra(['#editaEdeleta']);
 }
